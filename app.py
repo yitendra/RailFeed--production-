@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_file
 import classifier as clf
 from util import CUR_DIR
 import os
@@ -50,6 +50,10 @@ def csvFile():
 def getReview(name):
         Y = clf.classify(name)
         return jsonify({"msg": Y})
+
+@app.route('/getFile.csv')
+def getFile():
+        return send_file('./media/Result.csv')
 
 
 

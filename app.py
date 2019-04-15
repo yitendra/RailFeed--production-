@@ -45,7 +45,7 @@ def csvFile():
         @access Public
         Test single input via only the api endpoint
 """
-@app.route('/review/<name>', methods=['POST'])
+@app.route('/review/<string:name>')
 def getReview(name):
         Y = clf.classify(name)
         return jsonify({"msg": Y})

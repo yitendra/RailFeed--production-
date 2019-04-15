@@ -1,7 +1,6 @@
 import pandas as pd
 from util import CUR_DIR
 import csv
-import os
 from classifier import classify
 review = {}
 review['food']=[]
@@ -31,6 +30,7 @@ def analyze_csv():
 
     # Writing Data with Category in a file
     cats_df = pd.DataFrame(cats,columns=["category"])
-    os.remove('./media/TestData.csv')
+    data['category'] = cats_df
+    data.to_csv('./media/Result.csv', sep=",", index=False)
     return review
 # analyze_csv()

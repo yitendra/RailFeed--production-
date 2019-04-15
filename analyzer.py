@@ -10,5 +10,12 @@ review['clean']=[]
 review['digital']=[]
 review['others']=[]
 
-data = pd.read_csv('./media/TestData.csv')
 
+def analyze_csv():
+    data = pd.read_csv('./media/TestData.csv')
+
+    for i in range (len(data['complaint'])):
+        review[classify(data['complaint'][i])].append(data['complaint'][i])
+    print(review)
+    return review
+# analyze_csv()

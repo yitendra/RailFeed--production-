@@ -3,7 +3,7 @@ import classifier as clf
 from util import CUR_DIR
 import os
 from flask_cors import CORS
-
+from analyzer import analyze_csv
 app = Flask(__name__)
 CORS(app)
 
@@ -35,9 +35,10 @@ def review():
 @app.route('/upload', methods=['POST'])
 def csvFile():
         csv = request.files['file']
-        filename = csv.filename
+        filename = 'TestData.csv'
         csv.save(os.path.join(CUR_DIR,'media',filename))
-        return "file Upload successful"
+        review = analyze_csv()
+        return jsonify(review)
 
 
 """ 

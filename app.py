@@ -1,15 +1,15 @@
 from flask import Flask, render_template, request, jsonify
 import classifier as clf
+from classifier import CUR_DIR
+import os
 
 app = Flask(__name__)
 
 
-
-
-
 @app.route('/')
 def index():
-    return render_template('index.html')
+#     return "hello world!"
+      return render_template('index.html')  
 
 # @app.route('/success',methods=['POST'])
 # def success():
@@ -25,6 +25,13 @@ def review():
         Y = clf.classify(text['review'])
         print(Y)
         return jsonify({'message': Y})
+
+@app.route('/upload', methods=['POST'])
+def csvFile():
+        csv = request.files['file']
+        filename = csv.filename
+        csv.save(os.path.join(CUR_DIR,'media',filename))
+        return "file Upload successful"
 
 
 if __name__ == '__main__':

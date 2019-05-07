@@ -2,14 +2,6 @@ import pandas as pd
 from util import CUR_DIR
 import csv
 from classifier import classify
-review = {}
-review['food']=[]
-review['health']=[]
-review['journey']=[]
-review['security']=[]
-review['clean']=[]
-review['digital']=[]
-review['others']=[]
 
 
 def analyze_csv():
